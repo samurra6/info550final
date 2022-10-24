@@ -1,0 +1,2 @@
+load("/Users/sarahmurray/Documents/info550/final_repo/output/table2.rds")
+load("/Users/sarahmurray/Documents/info550/final_repo/output/table1.rds")

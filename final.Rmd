@@ -1,0 +1,64 @@
+---
+title: 'R Markdown Project: Indicators of Heart Disease'
+author: "Sarah Murray"
+date: "2022-09-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Introduction
+
+For this project, I have identified a "Key Indicators of Heart Disease" data set via Kaggle that was sourced from the 2020 annual CDC Behavioral Risk Factor Surveillance System (BRFSS) survey of 400k US adults related to their health status. This data set - a subset of the much larger full BRFSS 202 data set - contains a binary outcome variable (heart disease - yes (1) or no (0)?) and 17 additional variables that were thought to be potential indicators of heart disease status. These include numeric variables (such as BMI and average nightly hours of sleep) and categorical variables (such as race, smoking status, asthma status, physical activity level, and many others). In this R Markdown report, I will conduct an initial descriptive analysis of the data which will include a descriptive analysis table (Table 1) and a figure (Figure 1) showing the distribution of an indicator variable (BMI) stratified by heart disease status. Additionally, I will conduct a basic initial logistic regression to assess whether my chosen variables of interest -  BMI, sex, race, smoking status, and asthma status - have a significant association with heart disease outcomes.
+
+```{r, load-data, echo=FALSE}
+here::i_am("final.Rmd")
+heartdata <- read.csv(here::here("data/heart_2020_cleaned.csv"))
+```
+
+# Descriptive analysis
+
+## Tabular analysis
+
+Table 1: Descriptive statistics for Indicators of Heart Disease data set
+```{r}
+table1 <- readRDS(
+  file = here::here("output/table1.rds")
+)
+
+table1
+
+```
+\
+\
+
+Table 1 gives the descriptive statistics for all 17 potential indicator variables in the Indicators of Heart Disease data set stratified by heart disease status and overall. For continuous indicator variables, mean and standards deviation are given. For binary and categorical indicator variables, frequency is given.
+
+## Graphical analysis
+
+```{r}
+#| fig.align = "center",
+#| out.width = "700px"
+knitr::include_graphics(
+  here::here("output/figure.png")
+)
+```
+\
+\
+In Figure 1, violin plots with imposed box plots have been generated to display distribution of BMI stratified hy heart disease status. Figure 1 indicates that individuals surveyed who had heart disease had a higher average BMI than individuals surveyed who did not have heart disease (29.4 compared to 28.4)
+
+# Logistic regression
+
+Table 2: Logistic regression analysis with BMI, sex, race, smoking status, and asthma status as indicators of heart disease
+```{r}
+table2 <- readRDS(
+  file = here::here("output/table2.rds")
+)
+
+table2
+```
+\
+\
+Table 2 shows the log odds ratios, 95% confidence intervals, and p-values resulting from the logistic regression model with BMI, sex, race, smoking status, and asthma status as indicators of heart disease. The 95% confidence intervals and p-values displayed in Table 2 indicate that all 5 indicator variables included in the model were found to have a statistically significant association with heart disease. 
