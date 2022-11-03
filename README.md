@@ -33,4 +33,11 @@ The Makefile is used to produce table1, figure, table2, and render the final rep
 
 ------------------------------------------------------------------------
 
+# renv instructions
 
+This project is using the renv package to enhance reproducibility by synchronizing packages loaded and package versions. To synchronize the package repository after cloning this project, 
+  - ensure that the project environment is synchronized with the `renv.lock` file
+  - confirm that the `renv` package installed is
+  - run `renv::restore()` or run `make install` from the command line
+
+------------------------------------------------------------------------

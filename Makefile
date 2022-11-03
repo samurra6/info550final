@@ -13,4 +13,9 @@ output/table2.rds:code/03maketable2.R data/heart_2020_cleaned.csv
 .PHONY: clean
 clean:
 	rm -f output/*.rds && rm -f output/*.png && rm -f final.html
+
+.PHONY: install
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
+
 	
