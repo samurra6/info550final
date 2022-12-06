@@ -14,7 +14,7 @@ output/table2.rds:code/03maketable2.R data/heart_2020_cleaned.csv
 clean:
 	rm -f output/*.rds && rm -f output/*.png && rm -f final.html
 
-dockerimage: dockerfile code/01maketable1.R code/02makefigure.R code/03maketable2.R final.Rmd Makefile
+dockerimage: Dockerfile code/01maketable1.R code/02makefigure.R code/03maketable2.R final.Rmd Makefile
 	docker build -t fin .
 	touch $@
 
